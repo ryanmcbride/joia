@@ -297,6 +297,8 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.6)
     - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
+  - flutter_plugin_android_lifecycle (0.0.1):
+    - Flutter
   - GoogleAppMeasurement (6.5.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -351,12 +353,18 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.4.0)
+  - image_picker (0.0.1):
+    - Flutter
   - leveldb-library (1.22)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
+  - path_provider (0.0.1):
+    - Flutter
+  - path_provider_macos (0.0.1):
+    - Flutter
   - "permission_handler (4.4.0+hotfix.4)":
     - Flutter
   - PromisesObjC (1.2.8)
@@ -369,6 +377,10 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_core_web (from `.symlinks/plugins/firebase_core_web/ios`)
   - Flutter (from `Flutter`)
+  - flutter_plugin_android_lifecycle (from `.symlinks/plugins/flutter_plugin_android_lifecycle/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
 
 SPEC REPOS:
@@ -410,6 +422,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core_web/ios"
   Flutter:
     :path: Flutter
+  flutter_plugin_android_lifecycle:
+    :path: ".symlinks/plugins/flutter_plugin_android_lifecycle/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  path_provider_macos:
+    :path: ".symlinks/plugins/path_provider_macos/ios"
   permission_handler:
     :path: ".symlinks/plugins/permission_handler/ios"
 
@@ -432,6 +452,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: deb7242803734c97376278698de097499cf5194f
   FirebaseInstallations: 2119fb3e46b0a88bfdbf12562f855ee3252462fa
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_plugin_android_lifecycle: dc0b544e129eebb77a6bfb1239d4d1c673a60a35
   GoogleAppMeasurement: 137afe68bfa406c3f4221b9395253d9e5d4654cf
   GoogleDataTransport: ad884314b81cdb808fb1d23787b367ff8da4e28a
   GoogleDataTransportCCTSupport: d70a561f7d236af529fee598835caad5e25f6d3d
@@ -439,8 +460,11 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  image_picker: 66aa71bc96850a90590a35d4c4a2907b0d823109
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   permission_handler: 8278954f2382902f63f00dd8828769c0bd6d511b
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
