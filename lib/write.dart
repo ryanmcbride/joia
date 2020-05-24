@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:joia/models/entry.dart';
+import 'package:joia/repository/data_repository.dart';
 import 'dart:math';
 import 'bottom_bar.dart';
 
@@ -125,6 +127,7 @@ class TextSection extends StatefulWidget {
 }
 
 class _TextSectionState extends State<TextSection> {
+  final DataRepository repository = DataRepository();
   TextEditingController _controller;
   void initState() {
     super.initState();
@@ -146,7 +149,10 @@ class _TextSectionState extends State<TextSection> {
             maxLines: null,
             textAlign: TextAlign.left,
             controller: _controller,
-            onSubmitted: (String text) {}));
+            onSubmitted: (String text) {
+              var entry = Entry(_controller.text);
+              repository.addEntry(entry);
+            }));
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:joia/settings.dart';
 import 'login_signup.dart';
 import 'authentication.dart';
 import 'home.dart';
@@ -16,6 +17,7 @@ class RootPage extends StatefulWidget {
 
   final BaseAuth auth;
   static BaseAuth authObject;
+  static String userID;
 
   @override
   State<StatefulWidget> createState() => new _RootPageState();
@@ -32,6 +34,7 @@ class _RootPageState extends State<RootPage> {
       setState(() {
         if (user != null) {
           _userId = user?.uid;
+          RootPage.userID = _userId;
         }
         authStatus =
             user?.uid == null ? AuthStatus.NOT_LOGGED_IN : AuthStatus.LOGGED_IN;
@@ -43,6 +46,7 @@ class _RootPageState extends State<RootPage> {
     widget.auth.getCurrentUser().then((user) {
       setState(() {
         _userId = user.uid.toString();
+        RootPage.userID = _userId;
       });
     });
     setState(() {
@@ -54,6 +58,7 @@ class _RootPageState extends State<RootPage> {
     setState(() {
       authStatus = AuthStatus.NOT_LOGGED_IN;
       _userId = "";
+      RootPage.userID = _userId;
     });
   }
 
@@ -68,6 +73,8 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsPage.logoutCallback = logoutCallback;
+
     switch (authStatus) {
       case AuthStatus.NOT_DETERMINED:
         return buildWaitingScreen();
@@ -80,6 +87,7 @@ class _RootPageState extends State<RootPage> {
         break;
       case AuthStatus.LOGGED_IN:
         if (_userId.length > 0 && _userId != null) {
+          RootPage.userID = _userId;
           return new HomePage(
             userId: _userId,
             auth: widget.auth,

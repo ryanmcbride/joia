@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:joia/settings.dart';
 import 'write.dart';
 import 'bottom_bar.dart';
 import 'authentication.dart';
@@ -19,7 +18,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    SettingsPage.logoutCallback = widget.logoutCallback;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

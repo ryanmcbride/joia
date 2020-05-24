@@ -1,6 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:joia/repository/data_repository.dart';
+import 'package:joia/models/entry.dart';
 import 'bottom_bar.dart';
 
 class JournalPage extends StatefulWidget {
@@ -19,6 +20,7 @@ class JournalEntry {
 }
 
 class _JournalPageState extends State<JournalPage> {
+  final DataRepository repository = DataRepository();
   List<JournalEntry> litems = [
     JournalEntry(
         friend: "Edward Reyes",
@@ -93,6 +95,38 @@ class _JournalPageState extends State<JournalPage> {
     }
   }
 
+  Widget _buildListItem(BuildContext context, DocumentSnapshot snapshot) {
+    final entry = Entry.fromSnapshot(snapshot);
+    if (entry == null) {
+      return Container();
+    }
+    return Container(
+      height: 75,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.grey)),
+      ),
+      child: Row(
+        children: <Widget>[
+          Container(
+            color: Colors.red,
+            width: 75,
+          ),
+          Expanded(
+            child: Column(
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Text(entry.entry, textAlign: TextAlign.left),
+              ),
+            ],
+          ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,10 +134,17 @@ class _JournalPageState extends State<JournalPage> {
         automaticallyImplyLeading: false,
         title: Text("Journal"),
       ),
-      body: ListView.builder(
-        itemCount: litems.length,
-        itemBuilder: journalBuilder,
-      ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: repository.getStream(),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) return LinearProgressIndicator();
+            return ListView.builder(
+              itemCount: snapshot.data.documents.length,
+              itemBuilder: (BuildContext context, int index) {
+                return _buildListItem(context, snapshot.data.documents[index]);
+              },
+            );
+          }),
       bottomNavigationBar: CustomBottomBar(index: 1),
     );
   }
